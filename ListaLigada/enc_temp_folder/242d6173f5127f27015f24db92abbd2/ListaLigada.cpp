@@ -160,7 +160,7 @@ void excluirElemento()
 		while (aux != NULL) {
 			if (aux->valor == excluir) {
 				free(aux->prox);
-				aux = prox->prox;
+				aux = aux-> prox;
 				cout << "Elemento excluído.";
 				break;
 			}
