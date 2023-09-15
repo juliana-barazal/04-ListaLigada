@@ -145,7 +145,6 @@ void inserirElemento()
 
 void excluirElemento()
 {
-
 	if (primeiro == NULL) {
 		cout << "A lista está vazia. Escolha a opção 5 para inserir elementos.";
 	}
@@ -153,33 +152,41 @@ void excluirElemento()
 	else {
 		int excluir;
 		NO* aux = primeiro;
+		NO* ant = aux = primeiro;
 
 		cout << "Digite o número que deseja excluir: ";
 		cin >> excluir;
 
 		while (aux != NULL) {
-			if (aux->valor == excluir) {
-				free(aux->prox);
-				aux = prox->prox;
-				cout << "Elemento excluído.";
-				break;
+				if (excluir == primeiro->valor) {
+					primeiro = aux->prox;
+					free(aux);
+					cout << "Elemento excluído.";
+					break;
+				}
+
+				if (excluir == aux->valor) {
+					ant->prox = aux->prox;
+					free(aux);
+					cout << "Elemento excluído.";
+					break;
+
+				}
+				ant = aux;
+				aux = aux->prox;
+
+
+				if (aux == NULL) {
+					cout << "Elemento não encontrado.";
+				}
+
 			}
-			aux = aux->prox;
 
 		}
-
-		if (aux == NULL) {
-			cout << "Elemento não encontrado.";
-		}
-
-
-		
-	}
 }
 
 void buscarElemento()
 {
-
 	if (primeiro == NULL) {
 		cout << "A lista está vazia. Escolha a opção 5 para inserir elementos.";
 
